@@ -207,6 +207,3 @@ Evaluation Metrics
 
 ---
 
-## Author
-
-**Shrestha Tewari**
