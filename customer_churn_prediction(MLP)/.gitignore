@@ -1,0 +1,51 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Python Environment
+.python-version
+
+# Environment Variables
+.env
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Model Checkpoints
+*.npz
+*.npy
+
+# Generated Images (Optional)
+# Uncomment if you don't want to upload plots
+# images/
+
+# Matplotlib Cache
+.matplotlib/
+
+# Temporary Files
+*.tmp
+*.bak
