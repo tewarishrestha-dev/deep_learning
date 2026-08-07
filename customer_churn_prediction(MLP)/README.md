@@ -1,209 +1,195 @@
-# Customer Churn Prediction using a Neural Network from Scratch
+# Customer Churn Prediction using MLP from Scratch
 
-A binary classification neural network implemented **from scratch using NumPy** to predict whether a telecom customer will churn.
+A customer churn prediction model implemented **from scratch using NumPy** without using deep learning frameworks like TensorFlow or PyTorch.
+
+This project implements a **Multi-Layer Perceptron (MLP)** for binary classification and compares the performance of:
+
+* Gradient Descent (GD)
+* Adam Optimizer
+
+The goal is to understand neural networks, backpropagation, and optimization algorithms by building them manually.
+
+---
+
+## Features
+
+* Neural Network implemented from scratch using NumPy
+* Forward propagation
+* Backpropagation
+* ReLU activation function
+* Sigmoid output layer
+* He weight initialization
+* Binary Cross-Entropy loss
+* Class weighting for imbalanced data
+* Gradient Descent optimizer
+* Adam optimizer
+* Model evaluation and visualization
+
+---
+
+## Model Architecture
+
+```
+Input Features
+      |
+      v
+Dense Layer (64 neurons)
+      |
+     ReLU
+      |
+      v
+Output Layer (1 neuron)
+      |
+   Sigmoid
+      |
+      v
+Churn Probability
+```
 
 ---
 
 ## Dataset
 
-- **Dataset:** Telco Customer Churn
-- **Samples:** 7043
-- **Features:** 40 (after preprocessing)
-- **Target:** Churn (0 = No, 1 = Yes)
+Dataset used:
+
+**Telco Customer Churn Dataset**
+
+The model predicts:
+
+```
+0 → Customer stays
+1 → Customer churns
+```
+
+Preprocessing includes:
+
+* Removing unnecessary columns
+* Handling missing values
+* Encoding categorical features
+* Feature scaling
+
+---
+
+## Optimizers Compared
+
+### Gradient Descent
+
+Standard parameter update:
+
+[
+\theta = \theta - \eta \nabla L
+]
+
+### Adam Optimizer
+
+Implemented using:
+
+* Momentum
+* Adaptive learning rates
+* Bias correction
+
+---
+
+## Results
+
+### Gradient Descent
+
+```
+Test Accuracy : 73.42%
+```
+
+### Adam Optimizer
+
+```
+Test Accuracy : 74.41%
+```
+
+Adam showed better convergence and improved performance compared to vanilla Gradient Descent.
+
+---
+
+## Visualizations
+
+The project generates:
+
+* Loss curve
+* Confusion matrix
+* ROC curve
+* Precision-Recall curve
+* Probability distribution
+* Weight distribution
 
 ---
 
 ## Project Structure
 
 ```
-customer_churn_prediction/
+customer_churn_prediction(MLP)
 │
-├── data/
 ├── model.py
-├── preprocess.py
 ├── train.py
+├── preprocess.py
 ├── plot.py
-├── images/
-└── README.md
+├── README.md
+├── requirements.txt
+└── images/
 ```
 
 ---
 
-## Neural Network Architecture
+## How to Run
 
-```
-Input Layer (40 Features)
-          │
-          ▼
-Hidden Layer (16 Neurons)
-     Sigmoid Activation
-          │
-          ▼
-Output Layer (1 Neuron)
-     Sigmoid Activation
-          │
-          ▼
- Churn Probability
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
 ```
 
----
+Run with Gradient Descent:
 
-# Forward Propagation
-
-### Hidden Layer
-
-\[
-Z_1 = XW_1 + b_1
-\]
-
-\[
-A_1 = \sigma(Z_1)
-\]
-
----
-
-### Output Layer
-
-\[
-Z_2 = A_1W_2 + b_2
-\]
-
-\[
-A_2 = \sigma(Z_2)
-\]
-
----
-
-### Sigmoid Function
-
-\[
-\sigma(x)=\frac{1}{1+e^{-x}}
-\]
-
----
-
-# Binary Cross Entropy Loss
-
-\[
-L=-\frac1m\sum
-\left[
-y\log(\hat y)
-+
-(1-y)\log(1-\hat y)
-\right]
-\]
-
----
-
-# Backpropagation
-
-### Output Layer
-
-\[
-dZ_2=A_2-y
-\]
-
-\[
-dW_2=\frac1mA_1^TdZ_2
-\]
-
-\[
-db_2=\frac1m\sum dZ_2
-\]
-
----
-
-### Hidden Layer
-
-\[
-dZ_1=(dZ_2W_2^T)\times A_1(1-A_1)
-\]
-
-\[
-dW_1=\frac1mX^TdZ_1
-\]
-
-\[
-db_1=\frac1m\sum dZ_1
-\]
-
----
-
-# Gradient Descent
-
-\[
-W=W-\alpha dW
-\]
-
-\[
-b=b-\alpha db
-\]
-
-where
-
-- **α** = Learning Rate
-
----
-
-# Training Pipeline
-
+```bash
+python train.py --optimizer gd --threshold 0.50 
 ```
-Load Dataset
-      ↓
-Preprocessing
-      ↓
-Forward Propagation
-      ↓
-Binary Cross Entropy
-      ↓
-Backpropagation
-      ↓
-Gradient Descent
-      ↓
-Repeat for N Epochs
-      ↓
-Prediction
-      ↓
-Evaluation
+
+Run with Adam:
+
+```bash
+python train.py --optimizer adam --threshold 0.50
 ```
 
 ---
 
-# Results
+## Technologies Used
 
-- Train Accuracy: **79.9%**
-- Test Accuracy: **79.5%**
-
-Evaluation Metrics
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-- ROC Curve
-- Precision-Recall Curve
+* Python
+* NumPy
+* Pandas
+* Matplotlib
+* Scikit-learn
 
 ---
 
-# Technologies Used
+## Learning Outcomes
 
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Scikit-learn
+Through this project, I implemented and learned:
 
----
-
-# Future Improvements
-
-- ReLU Activation
-- Xavier / He Initialization
-- Adam Optimizer
-- Mini-batch Gradient Descent
-- Dropout
-- TensorFlow / Keras Implementation
+* Neural networks from first principles
+* Backpropagation
+* Gradient-based optimization
+* Adam optimizer
+* Handling class imbalance
+* Model evaluation techniques
 
 ---
+
+## Future Improvements
+
+* Mini-batch Gradient Descent
+* Dropout regularization
+* Early stopping
+* Hyperparameter tuning
+* Comparison with PyTorch implementation
+
+```
+```
 

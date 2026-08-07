@@ -5,14 +5,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGE_DIR = os.path.join(BASE_DIR, "images")
 
-os.makedirs(IMAGE_DIR, exist_ok=True)
-
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     RocCurveDisplay,
     PrecisionRecallDisplay,
     roc_auc_score,
-    precision_recall_curve
 )
 
 os.makedirs("images", exist_ok=True)
@@ -97,3 +94,30 @@ def plot_weight_distribution(model):
     plt.tight_layout()
     plt.savefig(os.path.join(IMAGE_DIR, "weight_distribution.png"))
     plt.close()
+
+def plot_accuracy(train_acc,test_acc):
+
+    plt.figure(figsize=(5,4))
+    plt.bar(["Train","Test"],[train_acc,test_acc])
+    plt.ylim(0,1)
+    plt.ylabel("Accuracy")
+    plt.title("Model Accuracy")
+    plt.tight_layout()
+    plt.savefig(os.path.join(IMAGE_DIR,"accuracy.png"))
+    plt.close()    
+
+def plot_optimizer_comparison(gd_loss,adam_loss):
+
+    plt.figure(figsize=(7,5))
+    plt.plot(gd_loss,label="Gradient Descent",linewidth=2)
+    plt.plot(adam_loss,label="Adam",linewidth=2)
+
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title("Optimizer Comparison")
+    plt.legend()
+    plt.grid(True)
+
+    plt.tight_layout()
+    plt.savefig(os.path.join(IMAGE_DIR,"optimizer_comparison.png"))
+    plt.close()    
