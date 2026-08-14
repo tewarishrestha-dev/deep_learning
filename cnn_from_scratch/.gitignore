@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.npy
+*.csv
+.venv/
+venv/
+.env
+
+data/
+*.csv
+*.gz
+*.idx
+*.ubyte
