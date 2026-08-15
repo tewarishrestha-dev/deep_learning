@@ -1,0 +1,41 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Datasets
+data/
+*.csv
+*.gz
+*.zip
+
+# Training outputs
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# Results / generated files
+results/
+runs/
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
