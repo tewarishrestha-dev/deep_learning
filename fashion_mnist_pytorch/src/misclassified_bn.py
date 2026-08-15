@@ -1,26 +1,14 @@
 import os
-
 import torch
 import matplotlib.pyplot as plt
-
 from dataset import test_dataset, class_names
 from model_bn import CNN
-
-
-# ============================================================
-# Configuration
-# ============================================================
 
 MODEL_PATH = "models/best_model_bn.pth"
 
 DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
-
-
-# ============================================================
-# Device
-# ============================================================
 
 print("=" * 60)
 print("MISCLASSIFIED IMAGES - CNN + BATCHNORM")
@@ -34,10 +22,6 @@ if torch.cuda.is_available():
         torch.cuda.get_device_name(0)
     )
 
-
-# ============================================================
-# Model
-# ============================================================
 
 model = CNN(
     num_classes=10
@@ -54,11 +38,6 @@ model.load_state_dict(
 )
 
 model.eval()
-
-
-# ============================================================
-# Find misclassified images
-# ============================================================
 
 misclassified = []
 
@@ -92,19 +71,10 @@ with torch.no_grad():
             )
 
 
-# ============================================================
-# Results
-# ============================================================
-
 print(
     "\nTotal misclassified:",
     len(misclassified)
 )
-
-
-# ============================================================
-# Display first 12
-# ============================================================
 
 num_images = min(
     12,
@@ -139,8 +109,6 @@ for i in range(num_images):
     axes[i].axis("off")
 
 
-# Hide unused axes
-
 for i in range(
     num_images,
     len(axes)
@@ -156,11 +124,6 @@ plt.suptitle(
 )
 
 plt.tight_layout()
-
-
-# ============================================================
-# Save
-# ============================================================
 
 os.makedirs(
     "images",

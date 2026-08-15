@@ -1,16 +1,11 @@
 import torch
 import torch.nn as nn
 
-
 class CNN(nn.Module):
 
     def __init__(self, num_classes=10):
 
         super().__init__()
-
-        # ====================================================
-        # Convolutional Block 1
-        # ====================================================
 
         self.conv1 = nn.Conv2d(
             in_channels=1,
@@ -28,11 +23,6 @@ class CNN(nn.Module):
             stride=2
         )
 
-
-        # ====================================================
-        # Convolutional Block 2
-        # ====================================================
-
         self.conv2 = nn.Conv2d(
             in_channels=16,
             out_channels=32,
@@ -49,11 +39,6 @@ class CNN(nn.Module):
             stride=2
         )
 
-
-        # ====================================================
-        # Classifier
-        # ====================================================
-
         self.flatten = nn.Flatten()
 
         self.fc1 = nn.Linear(
@@ -67,11 +52,6 @@ class CNN(nn.Module):
             128,
             num_classes
         )
-
-
-    # ========================================================
-    # Forward
-    # ========================================================
 
     def forward(self, x):
 

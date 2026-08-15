@@ -2,28 +2,14 @@ import torch
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
-
-# ============================================================
-# Configuration
-# ============================================================
-
 BATCH_SIZE = 64
-
 DATA_DIR = "data"
 
-
-# ============================================================
-# Transform
-# ============================================================
 
 transform = transforms.Compose([
     transforms.ToTensor()
 ])
 
-
-# ============================================================
-# Dataset
-# ============================================================
 
 train_dataset = datasets.FashionMNIST(
     root=DATA_DIR,
@@ -40,10 +26,6 @@ test_dataset = datasets.FashionMNIST(
 )
 
 
-# ============================================================
-# DataLoader
-# ============================================================
-
 train_loader = DataLoader(
     train_dataset,
     batch_size=BATCH_SIZE,
@@ -55,11 +37,6 @@ test_loader = DataLoader(
     batch_size=BATCH_SIZE,
     shuffle=False
 )
-
-
-# ============================================================
-# Classes
-# ============================================================
 
 class_names = [
     "T-shirt/top",
@@ -74,10 +51,6 @@ class_names = [
     "Ankle boot"
 ]
 
-
-# ============================================================
-# Test
-# ============================================================
 
 if __name__ == "__main__":
 

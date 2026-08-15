@@ -1,19 +1,11 @@
 import os
-
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 from sklearn.metrics import confusion_matrix
-
 from dataset import test_loader, class_names
 from model_bn import CNN
-
-
-# ============================================================
-# Configuration
-# ============================================================
 
 MODEL_PATH = "models/best_model_bn.pth"
 
@@ -21,11 +13,7 @@ DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
-
-# ============================================================
 # Device
-# ============================================================
-
 print("=" * 60)
 print("FINAL CNN + BATCHNORM EVALUATION")
 print("=" * 60)
@@ -39,19 +27,11 @@ if torch.cuda.is_available():
     )
 
 
-# ============================================================
-# Model
-# ============================================================
-
 model = CNN(
     num_classes=10
 ).to(DEVICE)
 
-
-# ============================================================
 # Load checkpoint
-# ============================================================
-
 checkpoint = torch.load(
     MODEL_PATH,
     map_location=DEVICE
@@ -79,16 +59,7 @@ print(
 )
 
 
-# ============================================================
-# Loss
-# ============================================================
-
 criterion = nn.CrossEntropyLoss()
-
-
-# ============================================================
-# Evaluation
-# ============================================================
 
 correct = 0
 total = 0
@@ -135,10 +106,6 @@ with torch.no_grad():
         )
 
 
-# ============================================================
-# Results
-# ============================================================
-
 test_loss = total_loss / total
 test_accuracy = correct / total
 
@@ -163,10 +130,6 @@ print(
 )
 
 
-# ============================================================
-# Confusion Matrix
-# ============================================================
-
 cm = confusion_matrix(
     all_labels,
     all_predictions
@@ -175,11 +138,7 @@ cm = confusion_matrix(
 print("\nConfusion Matrix:")
 print(cm)
 
-
-# ============================================================
 # Plot
-# ============================================================
-
 plt.figure(
     figsize=(10, 8)
 )
@@ -211,10 +170,6 @@ plt.yticks(
 
 plt.tight_layout()
 
-
-# ============================================================
-# Save
-# ============================================================
 
 os.makedirs(
     "images",
