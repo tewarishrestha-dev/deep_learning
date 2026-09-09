@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #050505;
+  color: #ffffff;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 20%, #241010 0%, transparent 45%),
+    #050505;
+}
+
+/* Navbar */
+
+.navbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e50914;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.nav-badge {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #777;
+}
+
+/* Hero */
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 30px 60px;
+}
+
+.hero-content {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #e50914;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(45px, 7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -4px;
+}
+
+h1 span {
+  color: #e50914;
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 30px auto 50px;
+  color: #999;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Review input */
+
+.review-card {
+  background: #101010;
+  border: 1px solid #282828;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+}
+
+textarea {
+  width: 100%;
+  min-height: 190px;
+  padding: 25px;
+  resize: vertical;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+textarea::placeholder {
+  color: #555;
+}
+
+.input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+  border-top: 1px solid #222;
+  color: #666;
+  font-size: 12px;
+}
+
+button {
+  border: none;
+  background: #e50914;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #f6121d;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Result */
+
+.result-card {
+  margin-top: 25px;
+  padding: 28px;
+  background: #101010;
+  border: 1px solid #282828;
+  border-radius: 14px;
+  text-align: left;
+  animation: appear 0.35s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.confidence {
+  color: #aaa;
+}
+
+.sentiment {
+  margin: 25px 0;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.probability-section {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.probability-row {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.progress {
+  height: 7px;
+  background: #242424;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #e50914;
+  border-radius: 10px;
+  transition: width 0.7s ease;
+}
+
+.progress-fill.negative {
+  background: #777;
+}
+
+/* Footer */
+
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #444;
+  font-size: 12px;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-badge {
+    display: none;
+  }
+
+  .hero {
+    padding: 70px 20px 40px;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .input-footer {
+    align-items: flex-end;
+    gap: 15px;
+  }
+
+  button {
+    padding: 12px 14px;
+  }
+}
