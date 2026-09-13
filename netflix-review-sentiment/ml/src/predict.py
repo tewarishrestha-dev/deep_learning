@@ -6,37 +6,29 @@ from tokenizer import tokenize
 from lstm_model import SentimentLSTM
 
 
-# --------------------------------------------------
 # Paths
-# --------------------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 MODEL_PATH = PROJECT_ROOT / "models" / "best_lstm.pth"
 
 
-# --------------------------------------------------
 # Device
-# --------------------------------------------------
 
 device = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
 
-# --------------------------------------------------
 # Load checkpoint
-# --------------------------------------------------
 
 checkpoint = torch.load(
     MODEL_PATH,
-    map_location=device
+    map_location=device,
+    weights_only=False
 )
 
-
-# --------------------------------------------------
 # Load vocabulary
-# --------------------------------------------------
 
 word_to_index = checkpoint["vocab"]
 
@@ -47,9 +39,7 @@ HIDDEN_DIM = checkpoint["hidden_dim"]
 MAX_LENGTH = checkpoint["max_length"]
 
 
-# --------------------------------------------------
 # Create model
-# --------------------------------------------------
 
 model = SentimentLSTM(
     vocab_size=VOCAB_SIZE,
@@ -66,9 +56,7 @@ model = model.to(device)
 model.eval()
 
 
-# --------------------------------------------------
 # Prediction function
-# --------------------------------------------------
 
 def predict_sentiment(review):
 
@@ -133,16 +121,15 @@ def predict_sentiment(review):
         confidence = 1 - probability
 
     return {
-        "sentiment": sentiment,
-        "confidence": confidence,
-        "positive_probability": probability,
-        "negative_probability": 1 - probability
+    "sentiment": sentiment,
+    "confidence": confidence,
+    "positive_probability": probability,
+    "negative_probability": 1 - probability,
+    "tokens": tokens[:18] 
     }
 
 
-# --------------------------------------------------
 # Test
-# --------------------------------------------------
 
 if __name__ == "__main__":
 

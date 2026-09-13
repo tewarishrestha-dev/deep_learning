@@ -8,8 +8,8 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Dataset
-ml/data/*.csv
+# Datasets
+**/*.csv
 
 # Node
 frontend/node_modules/
@@ -26,3 +26,6 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Unused model
+models/best_rnn.pth

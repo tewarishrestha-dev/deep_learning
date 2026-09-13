@@ -2,3 +2,5 @@ fastapi
 uvicorn
 pydantic
 torch
+pandas
+python-multipart
