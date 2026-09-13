@@ -5,7 +5,7 @@ import AIProcessVisualizer from "./components/AIProcessVisualizer";
 import BatchAnalyzer from "./components/BatchAnalyzer";
 import ModelInfo from "./components/ModelInfo";
 import PredictionHistory from "./components/PredictionHistory";
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://deep-learning-pr20.onrender.com";
 
 const examples = [
   "This movie was absolutely fantastic. I loved every minute of it.",
