@@ -5,7 +5,8 @@ import AIProcessVisualizer from "./components/AIProcessVisualizer";
 import BatchAnalyzer from "./components/BatchAnalyzer";
 import ModelInfo from "./components/ModelInfo";
 import PredictionHistory from "./components/PredictionHistory";
-const API_URL = "https://deep-learning-pr20.onrender.com";
+const API_URL = "https://netflix-sentiment-api.onrender.com";
+
 
 const examples = [
   "This movie was absolutely fantastic. I loved every minute of it.",
